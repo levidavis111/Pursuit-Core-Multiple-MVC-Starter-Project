@@ -12,7 +12,7 @@ class MovieListTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableV
+        
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -25,23 +25,69 @@ class MovieListTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 3
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        switch section {
+        case 0:
+            return Movie.actionFilm.count
+        case 1:
+            return Movie.animationFilm.count
+        case 2:
+            return Movie.dramaFilm.count
+        default:
+            return 0
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section {
+        case 0:
+            return "Action"
+        case 1:
+            return "Animation"
+        case 2:
+            return "Drama"
+        default:
+            return "error: section not found"
+        }
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as? MovieTableViewCell {}
+        
+        switch indexPath.section {
+        case 0:
+           if let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as? MovieTableViewCell {
+            cell.topLabel.text = Movie.actionFilm[indexPath.row].name
+            cell.bottomLabel.text = Movie.actionFilm[indexPath.row].genre
+            cell.movieView.image = Movie.actionFilm[indexPath.row].getImage()
+            return cell
+            }
+        case 1:
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as? MovieTableViewCell {
+                cell.topLabel.text = Movie.animationFilm[indexPath.row].name
+                cell.bottomLabel.text = Movie.animationFilm[indexPath.row].genre
+                cell.movieView.image = Movie.animationFilm[indexPath.row].getImage()
+                return cell
+            }
+        case 2:
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as? MovieTableViewCell {
+                cell.topLabel.text = Movie.dramaFilm[indexPath.row].name
+                cell.bottomLabel.text = Movie.dramaFilm[indexPath.row].genre
+                cell.movieView.image = Movie.dramaFilm[indexPath.row].getImage()
+                return cell
+            }
+        default:
+            return UITableViewCell()
+            
+        }
+        return UITableViewCell()
     }
-    */
+
 
     /*
     // Override to support conditional editing of the table view.

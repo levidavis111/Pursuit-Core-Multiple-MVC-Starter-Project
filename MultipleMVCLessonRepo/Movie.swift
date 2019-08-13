@@ -1,3 +1,5 @@
+import UIKit
+
 struct Movie {
     let name: String
     let year: Int
@@ -87,4 +89,21 @@ struct Movie {
               description: "Navy S.E.A.L. sniper Chris Kyle\"s pinpoint accuracy saves countless lives on the battlefield and turns him into a legend. Back home to his wife and kids after four tours of duty, however, Chris finds that it is the war he can\"t leave behind.")
     ]
 
+    static let actionFilm = Movie.allMovies.filter({ $0.genre == "action" })
+    static let animationFilm = Movie.allMovies.filter({ $0.genre == "animation" })
+    static let dramaFilm = Movie.allMovies.filter({ $0.genre == "drama" })
+    
+}
+
+extension Movie: CustomStringConvertible {
+    var customDescription: String {
+        return ""
+    }
+}
+
+extension Movie: Imageable {
+    var imageName: String {return posterImageName}
+    func getImage() -> UIImage {
+        return UIImage(named: imageName)!
+    }
 }
