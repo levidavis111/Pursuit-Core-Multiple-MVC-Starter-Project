@@ -15,6 +15,7 @@
 		FCFC5E67230309880068452D /* MovieListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFC5E66230309880068452D /* MovieListTableViewController.swift */; };
 		FCFC5E6923030D8F0068452D /* Imagable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFC5E6823030D8F0068452D /* Imagable.swift */; };
 		FCFC5E6B230311420068452D /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFC5E6A230311420068452D /* MovieTableViewCell.swift */; };
+		FCFC5E6D230319FD0068452D /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFC5E6C230319FD0068452D /* MovieDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		FCFC5E66230309880068452D /* MovieListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListTableViewController.swift; sourceTree = "<group>"; };
 		FCFC5E6823030D8F0068452D /* Imagable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Imagable.swift; sourceTree = "<group>"; };
 		FCFC5E6A230311420068452D /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
+		FCFC5E6C230319FD0068452D /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				FCFC5E66230309880068452D /* MovieListTableViewController.swift */,
+				FCFC5E6C230319FD0068452D /* MovieDetailViewController.swift */,
 				FCFC5E6A230311420068452D /* MovieTableViewCell.swift */,
 				CD04D1EA2302108400E9EEBB /* AppDelegate.swift */,
 				CD04D1EE2302108400E9EEBB /* Main.storyboard */,
@@ -148,6 +151,7 @@
 				FCFC5E67230309880068452D /* MovieListTableViewController.swift in Sources */,
 				CD04D1EB2302108400E9EEBB /* AppDelegate.swift in Sources */,
 				CD04D1FD23021ABC00E9EEBB /* Movie.swift in Sources */,
+				FCFC5E6D230319FD0068452D /* MovieDetailViewController.swift in Sources */,
 				FCFC5E6923030D8F0068452D /* Imagable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

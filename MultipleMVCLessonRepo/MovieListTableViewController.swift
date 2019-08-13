@@ -9,6 +9,11 @@
 import UIKit
 
 class MovieListTableViewController: UITableViewController {
+    
+    let movies = Movie.allMovies
+    let actionMovies = Movie.actionFilm
+    let animatedMovies = Movie.animationFilm
+    let dramaMovies = Movie.dramaFilm
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,14 +34,14 @@ class MovieListTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
+        
         switch section {
         case 0:
-            return Movie.actionFilm.count
+            return actionMovies.count
         case 1:
-            return Movie.animationFilm.count
+            return animatedMovies.count
         case 2:
-            return Movie.dramaFilm.count
+            return dramaMovies.count
         default:
             return 0
         }
@@ -57,28 +62,27 @@ class MovieListTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as? MovieTableViewCell {}
         
         switch indexPath.section {
         case 0:
            if let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as? MovieTableViewCell {
-            cell.topLabel.text = Movie.actionFilm[indexPath.row].name
-            cell.bottomLabel.text = Movie.actionFilm[indexPath.row].genre
-            cell.movieView.image = Movie.actionFilm[indexPath.row].getImage()
+            cell.topLabel.text = actionMovies[indexPath.row].name
+            cell.bottomLabel.text = actionMovies[indexPath.row].genre
+            cell.movieView.image = actionMovies[indexPath.row].getImage()
             return cell
             }
         case 1:
             if let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as? MovieTableViewCell {
-                cell.topLabel.text = Movie.animationFilm[indexPath.row].name
-                cell.bottomLabel.text = Movie.animationFilm[indexPath.row].genre
-                cell.movieView.image = Movie.animationFilm[indexPath.row].getImage()
+                cell.topLabel.text = animatedMovies[indexPath.row].name
+                cell.bottomLabel.text = animatedMovies[indexPath.row].genre
+                cell.movieView.image = animatedMovies[indexPath.row].getImage()
                 return cell
             }
         case 2:
             if let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as? MovieTableViewCell {
-                cell.topLabel.text = Movie.dramaFilm[indexPath.row].name
-                cell.bottomLabel.text = Movie.dramaFilm[indexPath.row].genre
-                cell.movieView.image = Movie.dramaFilm[indexPath.row].getImage()
+                cell.topLabel.text = dramaMovies[indexPath.row].name
+                cell.bottomLabel.text = dramaMovies[indexPath.row].genre
+                cell.movieView.image = dramaMovies[indexPath.row].getImage()
                 return cell
             }
         default:
@@ -88,7 +92,23 @@ class MovieListTableViewController: UITableViewController {
         return UITableViewCell()
     }
 
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let segueIdentifier = segue.identifier else {fatalError("no id in segue")}
+    
+    switch segueIdentifier {
+    case "detailSegue":
+        guard let movieDetailVC = segue.destination as? MovieDetailViewController else {
+            fatalError("oof")
+        }
+        guard let selectedIndexPath = tableView.indexPathForSelectedRow else {
+            fatalError("ufda")
+        }
+        movieDetailVC.movie = movies[selectedIndexPath.row]
+    default:
+        fatalError("double oof")
+    }
+}
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -127,7 +147,7 @@ class MovieListTableViewController: UITableViewController {
     /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    //In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
